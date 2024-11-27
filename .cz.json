@@ -1,0 +1,70 @@
+{
+  "commitizen": {
+    "name": "cz_conventional_commits",
+    "version": "0.0.1",
+    "tag_format": "v$version",
+    "update_changelog_on_bump": true,
+    "style": [
+      ["qmark", "fg:#ff9d00 bold"],
+      ["question", "bold"],
+      ["answer", "fg:#ff9d00 bold"],
+      ["pointer", "fg:#ff9d00 bold"],
+      ["highlighted", "fg:#ff9d00 bold"],
+      ["selected", "fg:#cc5454"],
+      ["separator", "fg:#cc5454"],
+      ["instruction", ""],
+      ["text", ""],
+      ["disabled", "fg:#858585 italic"]
+    ]
+  },
+  "customize": {
+    "message_template": "{emoji} {change_type}: {message}",
+    "example": "🎯 feat: add user authentication",
+    "change_type_map": {
+      "feat": {
+        "emoji": "✨",
+        "description": "A new feature"
+      },
+      "fix": {
+        "emoji": "🐛",
+        "description": "A bug fix"
+      },
+      "docs": {
+        "emoji": "📚",
+        "description": "Documentation only changes"
+      },
+      "style": {
+        "emoji": "💎",
+        "description": "Changes that do not affect the meaning of the code"
+      },
+      "refactor": {
+        "emoji": "📦",
+        "description": "A code change that neither fixes a bug nor adds a feature"
+      },
+      "perf": {
+        "emoji": "🚀",
+        "description": "A code change that improves performance"
+      },
+      "test": {
+        "emoji": "🚨",
+        "description": "Adding missing tests or correcting existing tests"
+      },
+      "build": {
+        "emoji": "🛠",
+        "description": "Changes that affect the build system or external dependencies"
+      },
+      "ci": {
+        "emoji": "⚙️",
+        "description": "Changes to our CI configuration files and scripts"
+      },
+      "chore": {
+        "emoji": "♻️",
+        "description": "Other changes that don't modify src or test files"
+      },
+      "revert": {
+        "emoji": "⏪",
+        "description": "Reverts a previous commit"
+      }
+    }
+  }
+}
