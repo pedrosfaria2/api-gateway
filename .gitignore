@@ -1,23 +1,85 @@
+# Binaries for programs and plugins
 *.exe
+*.exe~
 *.dll
 *.so
 *.dylib
+
+# Test binary, built with 'go test -c'
 *.test
-/build/
-bin/
+
+# Output files
 *.out
+*.log
+*.bak
+*.tmp
+*.gen.*
+
+# Go specific
+/build/
+/bin/
+/vendor/
+coverage.out
+coverage.html
+/tmp/
+
+# IDE specific
 .idea/
 .vscode/
 *.code-workspace
 *.swp
 *.swo
-*.tmp
-*.log
-vendor/
-*.gen.*
-*.pb.go
+.DS_Store
+
+# Environment variables
 .env
 .env.*
-*.bak
-.DS_Store
+*.env
+
+# Air - Live reload
+tmp/
+.air.toml.tmp
+
+# Docker
+.docker/
+docker-compose.override.yml
+
+# Project specific
 roadmap.md
+
+# Generated Protocol Buffers
+*.pb.go
+*.pb.gw.go
+
+# Service data directories
+/prometheus/data/
+/redis/data/
+/data/
+
+# Debug
+debug/
+debug.test
+__debug_bin
+
+# Dependency directories (remove if vendoring dependencies)
+vendor/
+
+# System Files
+.DS_Store
+Thumbs.db
+.directory
+*~
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local development
+*.local
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
