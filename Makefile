@@ -47,7 +47,7 @@ setup-hooks:
 
 .PHONY: build
 build:
-	CGO_ENABLED=0 GOOS=linux $(GO) build -o bin/main cmd/main.go
+	CGO_ENABLED=0 GOOS=linux $(GO) build -o bin/main cmd/api/main.go
 
 .PHONY: run
 run: build
