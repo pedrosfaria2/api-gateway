@@ -3,6 +3,12 @@ package ports
 import (
 	"context"
 	"net/http"
+
+	"github.com/pedrosfaria2/api-gateway/pkg/errors"
+)
+
+var (
+	ErrBackendNotFound = errors.NewError(errors.ErrorTypeValidation, "no backend found for request", nil)
 )
 
 type Gateway interface {
@@ -22,6 +28,13 @@ type Backend struct {
 	Retries   int
 	Circuit   CircuitBreaker
 	RateLimit RateLimiter
+	Routes    []Route
+}
+
+type Route struct {
+	Path    string
+	Methods []string
+	Strip   bool
 }
 
 type Middleware interface {
