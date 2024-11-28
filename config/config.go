@@ -5,9 +5,9 @@ import (
 )
 
 type Config struct {
-	Server   ServerConfig   `yaml:"server"`
+	Server   ServerConfig    `yaml:"server"`
 	Backends []BackendConfig `yaml:"backends"`
-	Plugins  PluginConfig   `yaml:"plugins"`
+	Plugins  PluginConfig    `yaml:"plugins"`
 }
 
 type ServerConfig struct {
@@ -21,7 +21,7 @@ type BackendConfig struct {
 	Name      string            `yaml:"name"`
 	URL       string            `yaml:"url"`
 	Timeout   time.Duration     `yaml:"timeout"`
-	Retries   int              `yaml:"retries"`
+	Retries   int               `yaml:"retries"`
 	RateLimit RateLimitConfig   `yaml:"rateLimit"`
 	Circuit   CircuitConfig     `yaml:"circuit"`
 	Routes    []RouteConfig     `yaml:"routes"`
@@ -35,9 +35,9 @@ type RouteConfig struct {
 }
 
 type RateLimitConfig struct {
-	Enabled   bool          `yaml:"enabled"`
-	Requests  int           `yaml:"requests"`
-	Duration  time.Duration `yaml:"duration"`
+	Enabled  bool          `yaml:"enabled"`
+	Requests int           `yaml:"requests"`
+	Duration time.Duration `yaml:"duration"`
 }
 
 type CircuitConfig struct {
@@ -48,9 +48,9 @@ type CircuitConfig struct {
 }
 
 type PluginConfig struct {
-	Auth     AuthConfig     `yaml:"auth"`
-	Metrics  MetricsConfig  `yaml:"metrics"`
-	Tracing  TracingConfig  `yaml:"tracing"`
+	Auth    AuthConfig    `yaml:"auth"`
+	Metrics MetricsConfig `yaml:"metrics"`
+	Tracing TracingConfig `yaml:"tracing"`
 }
 
 type AuthConfig struct {

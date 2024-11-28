@@ -7,10 +7,10 @@ import (
 type Type string
 
 const (
-	ErrorTypeInternal Type = "internal"
+	ErrorTypeInternal      Type = "internal"
 	ErrorTypeConfiguration Type = "configuration"
-	ErrorTypeValidation Type = "validation"
-	ErrorTypeBackend Type = "backend"
+	ErrorTypeValidation    Type = "validation"
+	ErrorTypeBackend       Type = "backend"
 )
 
 type Error struct {
