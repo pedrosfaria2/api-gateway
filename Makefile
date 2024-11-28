@@ -6,6 +6,7 @@ SERVICE_NAME := $(shell git remote get-url origin | sed 's/.*\/\([^\/]*\)\.git/\
 help:
 	@echo "Usage: make [target]"
 	@echo "Targets:"
+	@echo "  install-deps     Install system dependencies (requires sudo)"
 	@echo "  setup            Install Go dependencies"
 	@echo "  setup-hooks      Install git hooks and commit message validation"
 	@echo "  build            Build the application"
@@ -21,18 +22,28 @@ help:
 	@echo "  mock-generate    Generate mocks using mockgen"
 	@echo "  proto-generate   Generate protobuf files"
 
+.PHONY: install-deps
+install-deps:
+	@echo "This command requires sudo access to install system dependencies"
+	sudo apt-get update
+	sudo apt-get install -y pipx
+	pipx ensurepath
+	pipx install pre-commit
+	pipx install commitizen
+
 .PHONY: setup
 setup:
 	$(GO) mod download
-	$(GO) install github.com/cosmtrek/air@latest
+	$(GO) install github.com/air-verse/air@latest
 	$(GO) install github.com/golang/mock/mockgen@latest
-	$(GO) install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
-	pip install pre-commit commitizen
+	# Install golangci-lint
+	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(HOME)/go/bin v1.55.2
 
 .PHONY: setup-hooks
 setup-hooks:
 	pre-commit install
 	pre-commit install --hook-type commit-msg
+	git config commit.template .gitmessage
 
 .PHONY: build
 build:
@@ -66,7 +77,7 @@ test-coverage:
 
 .PHONY: lint
 lint:
-	golangci-lint run ./...
+	$(HOME)/go/bin/golangci-lint run ./...
 
 .PHONY: format
 format:
