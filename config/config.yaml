@@ -1,0 +1,37 @@
+server:
+  port: 8080
+  readTimeout: 5s
+  writeTimeout: 10s
+  idleTimeout: 120s
+
+backends:
+  - name: example-service
+    url: http://localhost:8081
+    timeout: 30s
+    retries: 3
+    rateLimit:
+      enabled: true
+      requests: 100
+      duration: 1s
+    circuit:
+      enabled: true
+      threshold: 0.5
+      timeout: 30s
+      maxRequests: 100
+    routes:
+      - path: /api/v1/example/**
+        methods: ["GET", "POST"]
+        strip: true
+    headers:
+      X-API-Version: "1.0"
+
+plugins:
+  auth:
+    enabled: true
+    type: jwt
+  metrics:
+    enabled: true
+    path: /metrics
+  tracing:
+    enabled: true
+    type: opentelemetry
